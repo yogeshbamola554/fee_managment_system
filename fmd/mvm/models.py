@@ -16,7 +16,19 @@ class Student_records(models.Model):
     previous_school = models.CharField()
     current_address = models.CharField()
     
-
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+class NewUserRegistration(models.Model):
+    username = models.CharField(),
+    mobile_no = models.CharField(),
+    email = models.CharField(),
+    first_name = models.CharField(max_length=20, null=False)
+    last_name = models.CharField(max_length=20)
+    profile_photo = models.ImageField()
+    address = models.CharField(null=False)
+    password = models.CharField()
+    creates_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
