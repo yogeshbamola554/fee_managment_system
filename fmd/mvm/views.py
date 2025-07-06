@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from django.views import View
 from django.contrib.auth.models import User
 from .models import NewUserRegistration
 
@@ -42,7 +41,7 @@ def register(request):
             return render(request,'new_user.html')
         
         if User.objects.filter(email=email).exists():
-            messages.error(request,'Email already Exists.Please try diffrent Email Address!')
+            messages.error(request,'Email already Exists.Please try again with diffrent Email Address!')
             return render(request,'new_user.html')
         
         # Creating the User Database
@@ -59,6 +58,7 @@ def register(request):
         )
         
         messages.success(request,'Account Created Successfully.You can now Login using mentioned Credentials!')
+        
         return redirect('login')
         
     return render(request,'new_user.html')
