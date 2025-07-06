@@ -44,42 +44,42 @@
         {% csrf_token %}
         <div class="row mb-3">
           <div class="col">
-            <label for="firstName" name="first_name"class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" id="firstName" required>
           </div>
           <div class="col">
-            <label for="lastName" name="last_name" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <label for="lastName"  class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" id="lastName" required>
           </div>
           <div class="col">
-            <label for="username" name="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" required>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="username" required>
           </div>
         </div>
         <div class="mb-3">
-          <label for="mobile" name="mobile_no" class="form-label">Mobile Number</label>
-          <input type="tel" class="form-control" id="mobile" required>
+          <label for="mobile" class="form-label">Mobile Number</label>
+          <input type="tel" name="mobile_no" class="form-control" id="mobile" required>
         </div>
         <div class="mb-3">
-          <label for="email" name="email_address" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" required>
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" name="email_address" class="form-control" id="email" required>
         </div>
         <div class="mb-3">
-          <label for="profilePhoto" name="profile_photo" class="form-label">Profile Photo</label>
-          <input type="file" class="form-control" id="profilePhoto" accept="image/*">
+          <label for="profilePhoto" class="form-label">Profile Photo</label>
+          <input type="file" name="profile_photo" class="form-control" id="profilePhoto" accept="image/*">
         </div>
         <div class="mb-3">
-          <label for="password" name="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" required>
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="password" required>
         </div>
         <div class="mb-3">
-          <label for="confirmPassword" name="confirm_password" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" required>
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" name="confirm_password" class="form-control" id="confirmPassword" required>
         </div>
         <!-- You can add additional fields if you want, Example: Address -->
         <div class="mb-3">
-          <label for="address" name="address" class="form-label">Address (Optional)</label>
-          <textarea class="form-control" id="address" rows="2"></textarea>
+          <label for="address" class="form-label">Address (Optional)</label>
+          <textarea class="form-control" name="address" id="address" rows="2"></textarea>
         </div>
         <div class="mb-3 text-end">
           <a href="{% url 'login' %}" class="btn btn-link">Already a user?</a>

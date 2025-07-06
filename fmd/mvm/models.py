@@ -20,11 +20,11 @@ class Student_records(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class NewUserRegistration(models.Model):
-    username = models.CharField(),
-    mobile_no = models.CharField(),
-    email = models.CharField(),
     first_name = models.CharField(max_length=20, null=False)
     last_name = models.CharField(max_length=20)
+    username = models.CharField(unique=True),
+    mobile_no = models.CharField(),
+    email = models.CharField(unique=True),
     profile_photo = models.ImageField()
     address = models.CharField(null=False)
     password = models.CharField()
