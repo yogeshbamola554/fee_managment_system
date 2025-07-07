@@ -3,20 +3,26 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import NewUserRegistration
+from django.contrib.auth.hashers import check_password,make_password
+
 
 # Create your views here.
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = authenticate(request, username = username, password = password)
+        try:
+            user = NewUserRegistration.objects.get(username=username)
 
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard.html')  # change to your success URL
-        else:
-            messages.error(request, 'Invalid username or password!')
+            if check_password(password, user.password):  # check hashed password
+                request.session['custom_user_id'] = user.id  # create custom session
+                messages.success(request, "Login successful!")
+                return redirect("dashboard")  # your dashboard page
+            else:
+                messages.error(request, "Invalid password.")
 
+        except NewUserRegistration.DoesNotExist:
+            messages.error(request, "User does not exist.")
     return render(request, 'login.html')
 
 
@@ -28,11 +34,15 @@ def register(request):
         mobile_no = request.POST.get('mobile_no')
         email = request.POST.get('email_address')
         profile_photo = request.POST.get('profile_photo')
-        password = request.POST.get('password')
+        raw_password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         address = request.POST.get('address')
+
+        #Hashing the pasword
+        password = make_password(raw_password)
+
         #Validating that Password and Confirm Password Match or Not
-        if password != confirm_password:
+        if raw_password != confirm_password:
             messages.error(request,'Password do no Match.Please try Again!')
             return render(request,'new_user.html')
         #Checking that User doesn't already exist in database
@@ -62,4 +72,7 @@ def register(request):
         return redirect('login')
         
     return render(request,'new_user.html')
+
+def dashboard(request):
+    return render(request,'dashboard.html')
 
