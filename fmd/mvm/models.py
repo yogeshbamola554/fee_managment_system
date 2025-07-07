@@ -20,13 +20,13 @@ class Student_records(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class NewUserRegistration(models.Model):
-    first_name = models.CharField(max_length=20, null=False)
+    first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    username = models.CharField(null=False)
-    mobile_no = models.CharField()
-    email = models.EmailField()
+    username = models.CharField(default=f"{first_name}!@#")
+    mobile_no = models.CharField(default="xxxxx-xxxx")
+    email = models.EmailField(default="abc@gmail.com")
     profile_photo = models.ImageField()
-    address = models.CharField(null=False)
+    address = models.CharField()
     password = models.CharField()
     creates_at = models.DateTimeField(auto_now=True)
     

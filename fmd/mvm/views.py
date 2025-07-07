@@ -49,7 +49,7 @@ def register(request):
         NewUserRegistration.objects.create(
             first_name = first_name,
             last_name = last_name,
-            # username = username,
+            username = username,
             mobile_no = mobile_no,
             email = email,
             profile_photo = profile_photo,
