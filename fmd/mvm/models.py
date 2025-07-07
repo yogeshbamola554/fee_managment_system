@@ -22,9 +22,9 @@ class Student_records(models.Model):
 class NewUserRegistration(models.Model):
     first_name = models.CharField(max_length=20, null=False)
     last_name = models.CharField(max_length=20)
-    username = models.CharField(unique=True),
-    mobile_no = models.CharField(),
-    email = models.CharField(unique=True),
+    username = models.CharField(null=False)
+    mobile_no = models.CharField()
+    email = models.EmailField()
     profile_photo = models.ImageField()
     address = models.CharField(null=False)
     password = models.CharField()
